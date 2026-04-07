@@ -157,9 +157,3 @@ This project demonstrates:
 ## Author
 
 **Afras Ahmed Khan**
-
-If you want, I can also help you with:
-
-- a stronger project title
-- a resume-ready project description
-- `.env` cleanup before pushing to GitHub
