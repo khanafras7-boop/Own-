@@ -1,0 +1,8 @@
+node/node_modules/
+frontend/node_modules/
+frontend/build/
+.env
+node/.env
+frontend/.env
+.DS_Store
+Thumbs.db
