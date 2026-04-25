@@ -3,10 +3,16 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <div className='navbar-container'>
-                <Link className='navbar-brand' to="/">Home</Link>
+                <Link className='navbar-brand' to="/">ShopHub</Link>
                 <div className='navbar-links'>
-                    <Link to="/auth">Auth</Link>
-                    <Link to="/checkout">Checkout</Link>
+                    <Link className='navbar-link' to="/auth">Auth</Link>
+                    <Link className='navbar-link' to="/checkout">Checkout</Link>
+                </div>
+                <div className='navbar-auth'>
+                    <div className='navbar-auth-links'>
+                        <Link className='btn btn-secondary' to="/auth">Login</Link>
+                        <Link className='btn btn-primary' to="/auth">Sign Up</Link>
+                    </div>
                 </div>
             </div>
         </nav>
