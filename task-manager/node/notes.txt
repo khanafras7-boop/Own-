@@ -1,0 +1,38 @@
+npm install express mongoose cors nodemon
+
+1. Express
+- Used to create backend servers and APIs in Node.js.
+- Handles routes, middleware, and HTTP methods like GET, POST, PUT, and DELETE.
+
+2. Mongoose
+- Used to model MongoDB data with schemas.
+- Helps perform CRUD operations with validation.
+
+3. CORS
+- Allows frontend and backend services on different ports to communicate.
+
+4. Nodemon
+- Restarts the backend server automatically during development.
+
+Server.js skeleton
+- imports
+- create app
+- middleware
+- database connection
+- routes
+- start server
+
+MongoDB methods
+| Operation | Method |
+| --------- | ------ |
+| Create    | `save()` / `create()` |
+| Read      | `find()` / `findById()` |
+| Update    | `findByIdAndUpdate()` |
+| Delete    | `findByIdAndDelete()` |
+
+Security note
+- Store the MongoDB connection string in `MONGO_URI`.
+- Never commit passwords or database credentials to GitHub.
+
+Development command
+npx nodemon server.js
