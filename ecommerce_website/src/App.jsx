@@ -1,18 +1,20 @@
 import { useState } from 'react'
 import './App.css'
-import {Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Checkout from './pages/Checkout'
 import Navbar from './components/Navbar'
 import AuthProvider from './context/AuthContext'
+import CartProvider from './context/CartContext'
 import ProductDetails from './pages/ProductDetails'
 function App() {
-  
+
 
   return (
-    
-      <AuthProvider>
+
+    <AuthProvider>
+      <CartProvider>
         <div className='app'>
           <Navbar />
           <Routes>
@@ -23,8 +25,9 @@ function App() {
             <Route path='*' element={<h1>404 not found</h1>} />
           </Routes>
         </div>
-      </AuthProvider>
-    
+      </CartProvider>
+    </AuthProvider>
+
   )
 }
 
