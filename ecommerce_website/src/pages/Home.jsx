@@ -1,4 +1,6 @@
+import ProductCard from "../components/ProductCard";
 import { getProducts } from "../data/products"
+import {Link} from 'react-router-dom'
 export default function Home () {
     const products = getProducts();
     return (
@@ -11,12 +13,10 @@ export default function Home () {
 
             <div className="container">
                 <h2 className="page-title">Our Products</h2>
-                <div className="products-grid">
+                <div className="product-grid">
                     {
                         products.map((product) => (
-                            <div className="product-cart" key={product.id}>
-                                <img src={product.image} className="product-card-image" alt="" />
-                            </div>
+                            <ProductCard key={product.key} product={product} />
                         ))
                     }
                 </div>
