@@ -1,11 +1,12 @@
 import { useContext, useState } from "react"
 import {useForm} from 'react-hook-form'
 import { AuthContext } from "../context/AuthContext";
+import {useNavigate} from 'react-router-dom'
 
 export default function Auth() {
     const [mode, setMode] = useState('signup');
     const [error, setError] = useState(null)
-
+    const navigate = useNavigate();
     const {signup, user, logout, login} = useContext(AuthContext)
 
     const {
@@ -15,15 +16,16 @@ export default function Auth() {
     } = useForm();
 
     const onSubmit = (data) => {
+        setError(null)
         let result;
         if(mode == 'signup') {
             result = signup(data.email, data.password)
         } else {
             result = login(data.email, data.password)
         }
-
+        console.log(result);
         if(result.success) {
-            alert('logged in');
+            navigate("/")
         } else {
             setError(result.error)
         }

@@ -38,7 +38,7 @@ export default function AuthProvider({children}) {
 
         localStorage.setItem("currentUser", email)
         setUser({email})
-
+        return {success : true}
     }
 
     const logout = () => {
