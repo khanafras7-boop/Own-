@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const AuthContext = createContext(null);
 
@@ -7,6 +7,12 @@ export default function AuthProvider({children}) {
     const [user, setUser] = useState(
         localStorage.getItem("currentUser") ? {email : localStorage.getItem("currentUser")} : null
     );
+
+    const [mode, setMode] = useState('login');
+
+    const changeMode = () => {
+        mode == 'login' ? setMode('signup') : setMode('login')
+    }
 
     const signup = (email, password) => {
         
@@ -49,6 +55,11 @@ export default function AuthProvider({children}) {
     }
     
     return (
-        <AuthContext.Provider value={{signup, user, logout, login}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{signup, user, logout, login, mode, changeMode}}>{children}</AuthContext.Provider>
     )
+}
+
+export function useAuth() {
+    const context = useContext(AuthContext);
+    return context
 }

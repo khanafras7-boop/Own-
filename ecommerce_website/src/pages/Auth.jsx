@@ -1,13 +1,13 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import {useForm} from 'react-hook-form'
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import {useNavigate} from 'react-router-dom'
 
 export default function Auth() {
-    const [mode, setMode] = useState('signup');
+    
     const [error, setError] = useState(null)
     const navigate = useNavigate();
-    const {signup, user, logout, login} = useContext(AuthContext)
+    const {signup, user, logout, login, mode, changeMode} = useAuth();
 
     const {
         register,
@@ -36,8 +36,12 @@ export default function Auth() {
         <div className="page">
             <div className="container">
                 <div className="auth-container">
-                    {user && <p>User has logged in {user.email} - <span onClick={logout} className="auth-link">Logout?</span></p>}
-                    {error && <p className="error-message">{error}</p>}
+                    {user 
+                    ?
+                    <p>User has logged in {user.email} - <span onClick={logout} className="auth-link">Logout?</span></p>
+                    :
+                    <div>
+                        {error && <p className="error-message">{error}</p>}
                     <h1 className="page-title">{mode === 'signup' ? "Sign Up" : "Login"}</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
 
@@ -72,12 +76,16 @@ export default function Auth() {
                     <div className="auth-switch">
                         {mode === 'signup' 
                         ? 
-                        <p>You already have an account? <span className="auth-link" onClick={() => setMode("login")}>Login</span></p> 
+                        <p>You already have an account? <span className="auth-link" onClick={changeMode}>Login</span></p> 
                         : 
-                        <p>You don't have an account? <span className="auth-link" onClick={() => setMode("signup")}>Sign Up</span></p>
+                        <p>You don't have an account? <span className="auth-link" onClick={changeMode}>Sign Up</span></p>
                         }
                         
                     </div>
+                    </div>
+                    
+                    }
+                    
                 </div>
             </div>
         </div>
