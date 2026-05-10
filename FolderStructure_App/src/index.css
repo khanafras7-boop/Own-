@@ -1,0 +1,14 @@
+.addItems .items {
+  border: 1px solid black;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding: 1px;
+}
+
+.addItems {
+  margin-top: 5px;
+}
+
+.row {
+  display: flex;
+}
